@@ -23,6 +23,8 @@
     "express": "^4.17.1",
     "joi": "^17.4.1",
     "mongoose": "^5.13.3",
+    "nanoid": "^3.1.23",
+    "valid-url": "^1.0.9",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
   }

@@ -1,5 +1,7 @@
-const testRouter = require('./testRoute');
+const redirectRouter = require('./redirect');
+const apiRouter = require('./api');
 
 module.exports = {
-  testRouter
+  redirectRouter,
+  apiRouter
 };

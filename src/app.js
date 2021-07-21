@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const { logger, sendError, initializeLogging } = require('./util');
 const { errorHandler } = require('./middlewares');
-const { testRouter } = require('./routes');
+const { redirectRouter, apiRouter } = require('./routes');
 
 require('dotenv').config();
 
@@ -31,7 +31,8 @@ app.use(express.json());
 const contextPath = process.env.CONTEXT_PATH || '/api/v1';
 
 //Add Routes
-app.use(`${contextPath}/test`, testRouter);
+app.use('/', redirectRouter);
+app.use(`${contextPath}`, apiRouter);
 
 // Capture errors
 app.use(errorHandler);
