@@ -24,11 +24,3 @@ jobs:
         push: true
         tags: ${{ github.repository }}
         context: .
-    - name: Executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOME }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PASSWORD }}
-        passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        script: whoami
