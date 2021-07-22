@@ -1,0 +1,19 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests
+
+name: Node.js CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2.3.0
+      with:
+        node-version: 14.x
+        cache: 'yarn'
+    - run: yarn install
