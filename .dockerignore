@@ -3,3 +3,5 @@ npm-debug.log
 log
 .env
 dist
+Dockerfile
+README.md

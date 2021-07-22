@@ -7,9 +7,8 @@ WORKDIR /app
 COPY package.json package.json
 COPY yarn.lock yarn.lock
 
-RUN npm i -g yarn
 RUN yarn install
 
 COPY . .
 
-CMD [ "yarn", "server.js" ]
+CMD [ "node", "src/app.js" ]
