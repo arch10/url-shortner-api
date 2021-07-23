@@ -9,5 +9,10 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Run a multi-line script
-        run: |
-          ssh root@arch10.in
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: ls -a
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
