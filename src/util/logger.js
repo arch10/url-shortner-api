@@ -10,7 +10,6 @@ const logger = createLogger({
   ),
   transports: [
     new DailyRotateFile({
-      level: 'warn',
       utc: true,
       maxFiles: '15d',
       maxSize: '20m',
