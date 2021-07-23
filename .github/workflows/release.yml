@@ -24,3 +24,11 @@ jobs:
         push: true
         tags: ${{ github.repository }}
         context: .
+    - name: Restart container
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: ${{ secrets.SSH_COMMAND }}
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
