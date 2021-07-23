@@ -33,6 +33,7 @@ app.use(useragent.express());
 const contextPath = process.env.CONTEXT_PATH || '/api/v1';
 
 //Add Routes
+app.use('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 app.use('/', redirectRouter);
 app.use(`${contextPath}`, apiRouter);
 
