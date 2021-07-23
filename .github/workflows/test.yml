@@ -11,7 +11,7 @@ jobs:
       - name: Run a multi-line script
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: ls -a
+          command: ${{ secrets.SSH_COMMAND }}
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
