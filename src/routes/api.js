@@ -16,10 +16,14 @@ router.get('/shorten', async (req, res, next) => {
     return;
   }
 
+  const remoteIp = req.get('X-Real-IP');
+
   if (validUrl.isUri(longUrl)) {
     try {
-      const url = await shortenUrl(longUrl, baseUrl);
-      logger.debug(`Shorted URL. ${url.shortUrl} -> ${url.longUrl}`);
+      const url = await shortenUrl(longUrl, baseUrl, remoteIp);
+      logger.debug(
+        `Added redirect URL by ${remoteIp}. ${url.shortUrl} -> ${url.longUrl}`
+      );
       res.status(200).json(url);
     } catch (error) {
       next(new Error(error.message));

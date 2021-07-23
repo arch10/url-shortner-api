@@ -21,7 +21,7 @@ const AnalyticsSchema = new Schema(
       type: String,
       default: 'Unknown'
     },
-    ip: {
+    remoteIp: {
       type: String,
       default: 'Unknown'
     }
@@ -36,9 +36,9 @@ const AnalyticsSchema = new Schema(
 
 const validationSchema = Joi.object({
   urlCode: Joi.string().required(),
-  browser: Joi.string(),
-  os: Joi.string(),
-  ip: Joi.string()
+  browser: Joi.string().default('Unknown'),
+  os: Joi.string().default('Unknown'),
+  remoteIp: Joi.string().default('Unknown')
 }).options({ stripUnknown: true });
 
 function validator(data) {

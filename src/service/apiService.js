@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 
 const { Url, validator } = require('../models/UrlModel');
 
-const shortenUrl = async (longUrl, baseUrl) => {
+const shortenUrl = async (longUrl, baseUrl, remoteIp) => {
   const urlCode = nanoid(10);
 
   let url = await Url.findOne({
@@ -14,7 +14,12 @@ const shortenUrl = async (longUrl, baseUrl) => {
     return url;
   } else {
     const shortUrl = baseUrl + '/' + urlCode;
-    const { value, error } = validator({ longUrl, shortUrl, urlCode });
+    const { value, error } = validator({
+      longUrl,
+      shortUrl,
+      urlCode,
+      remoteIp
+    });
     if (error) {
       throw new Error(error.details[0].message);
     }

@@ -41,9 +41,11 @@ app.use(errorHandler);
 
 // Capture Page not found
 app.use((req, res) => {
-  res.status(404).json(sendError(404, 'Page not found'));
+  const remoteIp = req.get('X-Real-IP') || req.ip || 'localhost';
+  const errorMessage = 'Page not found';
+  res.status(404).json(sendError(404, errorMessage));
   logger.info(
-    `404 - ${res.statusMessage} - ${req.originalUrl} - ${req.method} - ${req.ip}`
+    `404 - ${res.statusMessage} - ${errorMessage} - ${req.originalUrl} - ${req.method} - ${remoteIp}`
   );
 });
 

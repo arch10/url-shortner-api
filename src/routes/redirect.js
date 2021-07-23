@@ -11,12 +11,11 @@ router.get('/:code', async (req, res, next) => {
     const remoteIp = req.get('X-Real-IP');
     const { browser, os } = req.useragent;
 
-    saveAnalytics(code, browser, os, remoteIp);
-
     const url = await Url.findOne({
       urlCode: code
     });
     if (url) {
+      saveAnalytics(code, browser, os, remoteIp);
       logger.debug(`Redirecting. ${url.shortUrl} -> ${url.longUrl}`);
       return res.redirect(url.longUrl);
     } else {

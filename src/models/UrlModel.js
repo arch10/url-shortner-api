@@ -25,6 +25,10 @@ const URLSchema = new Schema(
       type: Number,
       default: new Date().getTime(),
       required: true
+    },
+    remoteIp: {
+      type: String,
+      default: 'Unknown'
     }
   },
   {
@@ -39,7 +43,8 @@ const URLSchema = new Schema(
 const validationSchema = Joi.object({
   urlCode: Joi.string().required(),
   longUrl: Joi.string().required(),
-  shortUrl: Joi.string().required()
+  shortUrl: Joi.string().required(),
+  remoteIp: Joi.string().default('Unknown')
 }).options({ stripUnknown: true });
 
 function validator(data) {
