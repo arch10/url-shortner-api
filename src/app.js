@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const useragent = require('express-useragent');
 
 const { logger, sendError, initializeLogging } = require('./util');
 const { errorHandler } = require('./middlewares');
@@ -26,6 +27,7 @@ db.once('open', () => {
 
 //Add Middleware
 app.use(express.json());
+app.use(useragent.express());
 
 //Add URL context
 const contextPath = process.env.CONTEXT_PATH || '/api/v1';

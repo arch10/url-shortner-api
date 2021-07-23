@@ -2,10 +2,16 @@ const router = require('express').Router();
 
 const { Url } = require('../models/UrlModel');
 const { logger, sendError } = require('../util');
+const { saveAnalytics } = require('../service/analyticsService');
 
 router.get('/:code', async (req, res, next) => {
   try {
     const code = req.params.code;
+
+    const remoteIp = req.get('X-Real-IP');
+    const { browser, os } = req.useragent;
+
+    saveAnalytics(code, browser, os, remoteIp);
 
     const url = await Url.findOne({
       urlCode: code
