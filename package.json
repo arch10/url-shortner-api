@@ -18,7 +18,7 @@
     "express-useragent": "^1.0.15",
     "joi": "^17.4.1",
     "mongoose": "^5.13.3",
-    "nanoid": "^3.1.23",
+    "nanoid": "^3.1.31",
     "valid-url": "^1.0.9",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
